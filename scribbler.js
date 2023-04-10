@@ -1,1 +1,35 @@
+//event listeners - mousedown, mousemove, mouseup
+document.getElementById('canvas').addEventListener("mousedown", pendown);
+document.getElementById('canvas').addEventListener("mousemove", draw);
+document.getElementById('canvas').addEventListener("mouseup", penup);
+var draw = false;
+
+function getPos(event){
+    const rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left; //get coordinates of mouse on canvas
+    var y = event.clientY - rect.top;
+    return [x, y];
+}
+
+function pendown(event){
+    ctx = canvas.getContext("2d"); //get canvas context, get mouse location
+    var pos = getPos(event);
+    ctx.moveTo(pos[0], pos[1]); //position cursor to current location  
+    ctx.beginPath(); //start path 
+    draw = true; //pendown flag used in draw()
+}
+
+function draw(event){
+    if (draw == true){ //if pen is down
+        ctx = canvas.getContext("2d"); //get cursor location
+        var pos = getPos(event);
+        ctx.lineTo(pos[0], pos[1]); //move path here and create stroke
+        ctx.stroke();
+    }
+}
+
+function penup(event){ 
+    //set draw flag
+    draw = false;
+}
 
