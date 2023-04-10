@@ -33,3 +33,12 @@ function penup(event){
     draw = false;
 }
 
+//download image
+document.getElementById('downloadBtn').addEventListener("click", download);
+
+function download(){
+    var link = document.getElementById('link');
+    link.setAttribute('download', 'image.jpg');
+    link.setAttribute('href', canvas.toDataURL("image/png"));
+    link.click();
+}
