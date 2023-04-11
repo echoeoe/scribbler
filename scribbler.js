@@ -4,6 +4,13 @@ document.getElementById('canvas').addEventListener("mousemove", draw);
 document.getElementById('canvas').addEventListener("mouseup", penup);
 var draw = false;
 
+//set white beneath canvas
+ctx = canvas.getContext("2d");
+ctx.globalCompositeOperation = 'destination-under';
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = 'black';
+
 function getPos(event){
     const rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left; //get coordinates of mouse on canvas
