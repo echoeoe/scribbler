@@ -9,7 +9,6 @@ ctx = canvas.getContext("2d");
 ctx.globalCompositeOperation = 'destination-under';
 ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = 'black';
 
 function getPos(event){
     const rect = canvas.getBoundingClientRect();
@@ -19,16 +18,17 @@ function getPos(event){
 }
 
 function pendown(event){
-    ctx = canvas.getContext("2d"); //get canvas context, get mouse location
+    ctx = canvas.getContext('2d'); //get canvas context, get mouse location
     var pos = getPos(event);
     ctx.moveTo(pos[0], pos[1]); //position cursor to current location  
     ctx.beginPath(); //start path 
     draw = true; //pendown flag used in draw()
+    ctx.strokeStyle = document.getElementById('color').value;
 }
 
 function draw(event){
     if (draw == true){ //if pen is down
-        ctx = canvas.getContext("2d"); //get cursor location
+        ctx = canvas.getContext('2d'); //get cursor location
         var pos = getPos(event);
         ctx.lineTo(pos[0], pos[1]); //move path here and create stroke
         ctx.stroke();
@@ -49,3 +49,12 @@ function download(){
     link.setAttribute('href', canvas.toDataURL("image/png"));
     link.click();
 }
+
+// // color selection
+// document.getElementById('color').addEventListener('change', setColor);
+
+// function setColor(){
+//     console.log(document.getElementById('color').value);
+//     color = document.getElementById('color').value;
+// }
+
