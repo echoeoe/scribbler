@@ -11,12 +11,17 @@ p    {color: darkslategrey;}
     width:100%;
     height:100%;
 }
+#thickness{
+    width:10%
+}
 </style>
 </head>
 
 <body>
-<h1>Scribbler <button id="downloadBtn" type="submit">save &#x1f4e5;&#xfe0e;</button> 
-<input id = "color" type="color" />
+<h1>Scribbler 
+    <button id="downloadBtn" type="submit">save &#x1f4e5;&#xfe0e;</button> 
+    <input id = "color" type="color" />
+    <input type="range" min="1" max="40" value="1" class="slider" id="thickness" >
 </h1>
 
 <a id = "link"></a>
