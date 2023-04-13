@@ -24,6 +24,7 @@ function pendown(event){
     ctx.beginPath(); //start path 
     draw = true; //pendown flag used in draw()
     ctx.strokeStyle = document.getElementById('color').value;
+    ctx.lineWidth = document.getElementById('thickness').value;
 }
 
 function draw(event){
@@ -49,12 +50,3 @@ function download(){
     link.setAttribute('href', canvas.toDataURL("image/png"));
     link.click();
 }
-
-// // color selection
-// document.getElementById('color').addEventListener('change', setColor);
-
-// function setColor(){
-//     console.log(document.getElementById('color').value);
-//     color = document.getElementById('color').value;
-// }
-
