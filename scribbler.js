@@ -4,11 +4,8 @@ document.getElementById('canvas').addEventListener("mousemove", draw);
 document.getElementById('canvas').addEventListener("mouseup", penup);
 var draw = false;
 
-//set white beneath canvas
-ctx = canvas.getContext("2d");
-ctx.globalCompositeOperation = 'destination-under';
-ctx.fillStyle = 'white';
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+//clear, set white beneath canvas
+clear();
 
 function getPos(event){
     const rect = canvas.getBoundingClientRect();
@@ -49,4 +46,15 @@ function download(){
     link.setAttribute('download', 'image.jpg');
     link.setAttribute('href', canvas.toDataURL("image/png"));
     link.click();
+}
+
+//clearing button 
+document.getElementById('clear').addEventListener("click", clear);
+
+function clear(){
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);   
+    ctx.globalCompositeOperation = 'destination-under';
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
