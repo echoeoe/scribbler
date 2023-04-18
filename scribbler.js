@@ -3,6 +3,7 @@ document.getElementById('canvas').addEventListener("mousedown", pendown);
 document.getElementById('canvas').addEventListener("mousemove", draw);
 document.getElementById('canvas').addEventListener("mouseup", penup);
 var draw = false;
+var erase = false;
 
 //clear, set white beneath canvas
 clear();
@@ -19,8 +20,14 @@ function pendown(event){
     ctx.moveTo(pos[0], pos[1]); //position cursor to current location  
     ctx.beginPath(); //start path 
     draw = true; //pendown flag used in draw()
-    ctx.strokeStyle = document.getElementById('color').value;
-    ctx.lineWidth = document.getElementById('thickness').value;
+    if (erase == false){ //using pen
+        ctx.strokeStyle = document.getElementById('color').value;
+        ctx.lineWidth = document.getElementById('thickness').value;
+    }
+    else{ //using eraser
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = "35";
+    }   
 }
 
 function draw(event){
@@ -56,4 +63,17 @@ function clear(){
     ctx.globalCompositeOperation = 'destination-under';
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+//eraser = white thick pen
+document.getElementById('eraser').addEventListener("click", eraser);
+
+function eraser(){
+    //toggle eraser boolean
+    if(erase == false){
+        erase = true;
+    }
+    else{
+        erase = false;
+    }
 }
