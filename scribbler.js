@@ -8,9 +8,8 @@ var draw = false;
 clear();
 
 function getPos(event){
-    const rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left; //get coordinates of mouse on canvas
-    var y = event.clientY - rect.top;
+    var x = event.offsetX; 
+    var y = event.offsetY;
     return [x, y];
 }
 
@@ -43,7 +42,7 @@ document.getElementById('downloadBtn').addEventListener("click", download);
 
 function download(){
     var link = document.getElementById('link');
-    link.setAttribute('download', 'image.jpg');
+    link.setAttribute('download', 'image.png');
     link.setAttribute('href', canvas.toDataURL("image/png"));
     link.click();
 }
