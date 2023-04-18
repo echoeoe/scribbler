@@ -71,9 +71,11 @@ document.getElementById('eraser').addEventListener("click", eraser);
 function eraser(){
     //toggle eraser boolean
     if(erase == false){
-        erase = true;
+        erase = true; 
+        document.getElementById('eraser').style.backgroundColor = "green"; //visual indicator
     }
     else{
         erase = false;
+        document.getElementById('eraser').style.backgroundColor = "ButtonFace"; //visual indicator
     }
 }
