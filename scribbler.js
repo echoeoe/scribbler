@@ -72,7 +72,7 @@ function eraser(){
     //toggle eraser boolean
     if(erase == false){
         erase = true; 
-        document.getElementById('eraser').style.backgroundColor = "green"; //visual indicator
+        document.getElementById('eraser').style.backgroundColor = "Chocolate"; //visual indicator
     }
     else{
         erase = false;
