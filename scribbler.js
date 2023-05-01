@@ -2,6 +2,7 @@
 document.getElementById('canvas').addEventListener("mousedown", pendown);
 document.getElementById('canvas').addEventListener("mousemove", draw);
 document.getElementById('canvas').addEventListener("mouseup", penup);
+
 var draw = false;
 var erase = false;
 
@@ -9,14 +10,14 @@ var erase = false;
 clear();
 
 function getPos(event){
-    var x = event.offsetX; 
-    var y = event.offsetY;
+    const x = event.offsetX; 
+    const y = event.offsetY;
     return [x, y];
 }
 
 function pendown(event){
     ctx = canvas.getContext('2d'); //get canvas context, get mouse location
-    var pos = getPos(event);
+    const pos = getPos(event);
     ctx.moveTo(pos[0], pos[1]); //position cursor to current location  
     ctx.beginPath(); //start path 
     draw = true; //pendown flag used in draw()
@@ -33,7 +34,7 @@ function pendown(event){
 function draw(event){
     if (draw == true){ //if pen is down
         ctx = canvas.getContext('2d'); //get cursor location
-        var pos = getPos(event);
+        const pos = getPos(event);
         ctx.lineTo(pos[0], pos[1]); //move path here and create stroke
         ctx.stroke();
     }
@@ -48,7 +49,7 @@ function penup(event){
 document.getElementById('downloadBtn').addEventListener("click", download);
 
 function download(){
-    var link = document.getElementById('link');
+    const link = document.getElementById('link');
     link.setAttribute('download', 'image.png');
     link.setAttribute('href', canvas.toDataURL("image/png"));
     link.click();
